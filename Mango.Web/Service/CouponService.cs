@@ -17,7 +17,7 @@ public class CouponService: ICouponService
         return await _baseService.SendAsync(new RequestDto()
         {
             ApiType = SD.ApiType.GET,
-            Url = SD.CouponAPIBase+"/api/CouponAPI/GetByCode/"+couponCode
+            Url = SD.CouponAPIBase+"/api/coupon/GetByCode/"+couponCode
         });
     }
 
@@ -26,7 +26,7 @@ public class CouponService: ICouponService
         return await _baseService.SendAsync(new RequestDto()
         {
             ApiType = SD.ApiType.GET,
-            Url = SD.CouponAPIBase+"/api/CouponAPI"
+            Url = SD.CouponAPIBase+"/api/coupon"
 
         });
     }
@@ -36,7 +36,7 @@ public class CouponService: ICouponService
         return await _baseService.SendAsync(new RequestDto()
         {
             ApiType = SD.ApiType.GET,
-            Url = SD.CouponAPIBase + "/api/CouponAPI/GetByCode/" + id
+            Url = SD.CouponAPIBase + "/api/coupon/GetByCode/" + id
         });
 
     }
@@ -46,7 +46,7 @@ public class CouponService: ICouponService
         return await _baseService.SendAsync(new RequestDto()
         {
             ApiType = SD.ApiType.POST,
-            Url = SD.CouponAPIBase + "/api/CouponAPI",
+            Url = SD.CouponAPIBase + "/api/coupon",
             Data = couponDto
         });
     }
@@ -56,7 +56,7 @@ public class CouponService: ICouponService
         return await _baseService.SendAsync(new RequestDto()
         {
             ApiType = SD.ApiType.DELETE,
-            Url = SD.CouponAPIBase + "/api/Delete/"+ id
+            Url = SD.CouponAPIBase + "/api/coupon/Delete/"+ id
         });
     }
 
@@ -65,7 +65,7 @@ public class CouponService: ICouponService
         return await _baseService.SendAsync(new RequestDto()
         {
             ApiType = SD.ApiType.PUT,
-            Url = SD.CouponAPIBase + "/api/CouponAPI/Update",
+            Url = SD.CouponAPIBase + "/api/coupon/Update",
             Data = couponDto
         });
     }
