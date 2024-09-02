@@ -117,7 +117,7 @@ public class CouponAPIController : Controller
     }
 
     [HttpDelete]
-    [Route("Delete")]
+    [Route("{id:int}")]
     public ResponseDto Delete(int id)
     {
         try
