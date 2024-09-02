@@ -38,11 +38,14 @@ public class CouponController : Controller
     [HttpPost]
     public async Task<IActionResult> CouponCreate(CouponDto couponDto)
     {
+        
         if (ModelState.IsValid)
         {
             ResponseDto response = await _couponService.CreateCouponAsync(couponDto);
             if (response != null && response.IsSuccess)
             {
+                
+                TempData["success"] = "Coupon created successfully";
                 return RedirectToAction(nameof(CouponIndex));
             }
             else
@@ -77,6 +80,7 @@ public class CouponController : Controller
         ResponseDto? response = await _couponService.DeleteCouponAsync(couponDto.CouponId);
         if (response != null && response.IsSuccess)
         {
+            TempData["success"] = "Coupon deleted successfully";
             return RedirectToAction(nameof(CouponIndex)); 
         }
         else
