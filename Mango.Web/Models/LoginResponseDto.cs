@@ -1,4 +1,6 @@
-namespace Mango.Services.AuthAPI.Models.Dto;
+using Mango.Web.Models;
+
+namespace Mango.Web.Models;
 
 public class LoginResponseDto
 {
