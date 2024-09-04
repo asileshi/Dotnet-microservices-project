@@ -86,4 +86,22 @@ public class AuthService:IAuthService
         };
         return loginResponseDto;
     }
+
+    public async Task<bool> AssignRole(string email, string role)
+    {
+        var user = _db.ApplicationUsers.FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
+        if (user != null)
+        {
+            if (!_roleManager.RoleExistsAsync(role).GetAwaiter().GetResult())
+            {
+                _roleManager.CreateAsync(new IdentityRole(role)).GetAwaiter().GetResult();
+            }
+
+            await _userManager.AddToRoleAsync(user, role);
+            return true;
+
+        }
+
+        return false;
+    }
 }
