@@ -10,11 +10,11 @@ namespace Mango.Web.Service;
 
 public class BaseService : IBaseService
 {
-    private readonly IHttpClientFactory _HttpClientFactory;
+    private readonly IHttpClientFactory _httpClientFactory;
 
     public BaseService(IHttpClientFactory httpClientFactory)
     {
-        _HttpClientFactory = httpClientFactory;
+        _httpClientFactory = httpClientFactory;
 
     }
 
@@ -22,7 +22,7 @@ public class BaseService : IBaseService
     {
         try
         {
-            HttpClient client = _HttpClientFactory.CreateClient("MangoAPI");
+            HttpClient client = _httpClientFactory.CreateClient("MangoAPI");
             HttpRequestMessage message = new();
             message.Headers.Add("Accept", "application/json");
             //token

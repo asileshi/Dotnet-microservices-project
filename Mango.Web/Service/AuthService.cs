@@ -28,7 +28,7 @@ public class AuthService: IAuthService
         {
             ApiType = SD.ApiType.POST,
             Data = registrationRequestDto,
-            Url = SD.AuthAPIBase + "auth/register"
+            Url = SD.AuthAPIBase + "/api/auth/register"
         });
     }
 
