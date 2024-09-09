@@ -44,7 +44,7 @@ public class AuthController : Controller
         }
         else
         {
-            ModelState.AddModelError("CustomError",responseDto.Message);
+            TempData["error"] = responseDto.Message;
             return View(obj);
         }
     }
@@ -81,6 +81,10 @@ public class AuthController : Controller
                 return RedirectToAction(nameof(Login));
             }
 
+        }
+        else
+        {
+            TempData["error"] = result.Message;
         }
         var roleList = new List<SelectListItem>()
         {
