@@ -7,15 +7,15 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Mango.Services.ProductAPI.Controllers;
 
-[Route("api/coupon")]
+[Route("api/product")]
 [ApiController]
-//[Authorize]
-public class CouponAPIController : Controller
+[Authorize]
+public class ProductAPIController : Controller
 {
     private readonly AppDbContext _db;
     private ResponseDto _response;
     private IMapper _mapper;
-    public CouponAPIController(AppDbContext db, IMapper mapper)
+    public ProductAPIController(AppDbContext db, IMapper mapper)
     {
         _db = db;
         _response = new ResponseDto();
@@ -60,12 +60,12 @@ public class CouponAPIController : Controller
 
     
     [HttpPost]
-    //[Authorize(Roles = "ADMIN")]
-    public ResponseDto Post([FromBody] ProductDto couponDto)
+    [Authorize(Roles = "ADMIN")]
+    public ResponseDto Post([FromBody] ProductDto productDto)
     {
         try
         {
-            Product obj = _mapper.Map<Product>(couponDto);
+            Product obj = _mapper.Map<Product>(productDto);
             _db.Products.Add(obj);
             _db.SaveChanges();
 
@@ -82,7 +82,7 @@ public class CouponAPIController : Controller
 
     [HttpPut]
     [Route("Update")]
-    //[Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "ADMIN")]
     public ResponseDto Put([FromBody] ProductDto couponDto)
     {
         try
@@ -104,7 +104,7 @@ public class CouponAPIController : Controller
 
     [HttpDelete]
     [Route("{id:int}")]
-    //[Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "ADMIN")]
     public ResponseDto Delete(int id)
     {
         try

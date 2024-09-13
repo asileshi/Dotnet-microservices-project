@@ -100,6 +100,7 @@ public class CouponAPIController : Controller
 
     [HttpPut]
     [Route("Update")]
+    [Authorize(Roles = "ADMIN")]
     public ResponseDto Put([FromBody] CouponDto couponDto)
     {
         try
@@ -121,6 +122,7 @@ public class CouponAPIController : Controller
 
     [HttpDelete]
     [Route("{id:int}")]
+    [Authorize(Roles = "ADMIN")]
     public ResponseDto Delete(int id)
     {
         try
